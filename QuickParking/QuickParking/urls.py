@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 
+admin.site.site_header = "QuickPark Admin"
+admin.site.site_title = "QuickPark Admin Portal"
+admin.site.index_title = "Welcome to QuickPark Researcher Portal"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('parkingapp.urls'))
