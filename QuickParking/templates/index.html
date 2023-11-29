@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+    <div class="container-fluid px-0">
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img src="./static/1.jpg" height="650" width="1800" class="d-block w-100" alt="loading...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./static/2.jpg" height="650" width="1800" class="d-block w-100" alt="loading...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./static/3.jpg" height="650" width="1800" class="d-block w-100" alt="loading...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./static/4.jpg" height="650" width="1800" class="d-block w-100" alt="loading...">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+{% endblock body %}
