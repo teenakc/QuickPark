@@ -3,5 +3,33 @@
 {% block title %}Contact{% endblock title %}
 
 {% block body %}
-Contact Page
+        <div class="container">
+                <!-- <img src="https://source.unsplash.com/1200x400/?phone,contact" class="d-block w-100 mx-0" alt="..."> -->
+                <h2>Contact Us</h2>
+                <div class="container mb-3">
+                        <form method="post" action="{% url "contact" %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                  <label for="name">Name</label>
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Full Name" Required>
+                                </div>
+                                <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" Required>
+                                      </div>
+                                <div class="form-group">
+                                        <label for="phone">Mobile No.</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Your Mobile no." Required>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                  <label for="desc">Description</label>
+                                  <textarea class="form-control" id="desc" rows="3" name="desc" Required></textarea>
+                                </div>
+        
+                                <button class="btn btn-outline-info" style="margin-top: 1%" type="submit">Submit</button>
+                              </form>
+                </div>
+        </div>
 {% endblock body %}
