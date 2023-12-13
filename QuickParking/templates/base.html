@@ -31,15 +31,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="/about">AboutUs</a>
               </li>
+              <li>
+                <p class="navbar-text">{% if username %}{{ username }}{% endif %}</p>
+              </li>
               <form class="container-fluid justify-content-end">
-                <button class="btn btn-outline-success me-2" type="button" >SignIn</button>
-                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalSignin">
-                  Sign Up
-               </button>
+                
+                <a class="btn btn-outline-danger me-2" href="{% url 'logout' %}" >logout</a>
+                
               </form>
               
             </ul>
-         
+            
           </div>
         </div>
       </nav>

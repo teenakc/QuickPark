@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Home{% endblock title %}
 
 {% block body %}
@@ -9,8 +9,12 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
+          <img src="./static/park2.jpg" height="550" width="1600" class="d-block w-100" alt="loading...">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
           <img src="./static/1.jpg" height="550" width="1600" class="d-block w-100" alt="loading...">
         </div>
+
         <div class="carousel-item" data-bs-interval="5000">
           <img src="./static/2.jpg" height="550" width="1600" class="d-block w-100" alt="loading...">
         </div>
