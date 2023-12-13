@@ -1,17 +1,29 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse , redirect
 from datetime import datetime
 from parkingapp.models import Contact
 from django.contrib import messages
+from django.contrib.auth.models import User 
+from django.contrib.auth import logout,authenticate,login
 # Create your views here.
+#user password @TRPcpm123#
+
+
+
 def index(request):
     #here the context is the set of variables so i can use them for further reference 
     # context = {
     #     'variable1': "Hello",
     #     'variable2' : "TRP",
     # }
-    return render(request, 'index.html') #here i can add the context for the variables for ex: render(request, 'index.html' , context ) 
+    
+    if request.user.is_anonymous:
+        return redirect("/login")
+
+    username = request.user.username
+    return render(request, 'index.html',{'username': username}) #here i can add the context for the variables for ex: render(request, 'index.html' , context ) 
 
 def about(request):
+    
     return render(request,'about.html')
     # return HttpResponse('this is about page')
 
@@ -31,3 +43,25 @@ def contact(request):
 
 def signup(request):
     return render(request,'signup.html')
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username,password)
+        password = str(password)
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            # A backend authenticated the credentials
+            login(request,user)
+            return redirect("/")
+        else:
+            # No backend authenticated the credentials
+            return render(request,"login2.html",)
+        
+    return render(request, "login2.html")
+
+def logoutUser(request):
+    logout(request)
+    return redirect('/login')
