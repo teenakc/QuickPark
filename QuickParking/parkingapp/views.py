@@ -4,6 +4,8 @@ from parkingapp.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User 
 from django.contrib.auth import logout,authenticate,login
+
+
 # Create your views here.
 #user password @TRPcpm123#
 
@@ -42,6 +44,20 @@ def contact(request):
     # return HttpResponse('this is services page')
 
 def signup(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        data = User.objects.create_user(first_name=first_name,last_name=last_name,email=email,username=username,password=password)
+        data.save()
+        # messages.success(request, "Account Created Successfully return to login page !")
+        return redirect('login')
+
+        
     return render(request,'signup.html')
 
 def user_login(request):
@@ -58,7 +74,11 @@ def user_login(request):
             return redirect("/")
         else:
             # No backend authenticated the credentials
-            return render(request,"login2.html",)
+            messages.warning(request,"Sorry you entered the wrong credential please make sure you have an account")
+
+
+        
+            
         
     return render(request, "login2.html")
 

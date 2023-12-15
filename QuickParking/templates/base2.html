@@ -12,42 +12,37 @@
     <script src="{% static 'path/to/bootstrap.bundle.min.js' %}"></script>
     <title>{% block title %}{% endblock title %} |QuickPark</title>
     <link rel="icon" type="image/x-icon" href="{% static "car2.svg" %}">
+    <style>
+        .card-body {
+            -webkit-box-shadow: 3px 6px 38px 5px rgba(0, 0, 0, 0.16);
+            -moz-box-shadow: 3px 6px 38px 5px rgba(0, 0, 0, 0.16);
+            box-shadow: 3px 6px 38px 5px rgba(0, 0, 0, 0.16);
+        }
+
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .h-custom {
+            height: calc(100% - 73px);
+        }
+
+        @media (max-width: 450px) {
+            .h-custom {
+                height: 100%;
+            }
+        }
+    </style>
+
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="{% static "car2.svg" %}" alt="" width="70" height="30" class="d-inline-block align-text-center">QuickPark</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 60% ">
-            <ul class="navbar-nav ">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">AboutUs</a>
-              </li>
-              <li>
-                <p class="navbar-text">{% if username %}{{ username }}{% endif %}</p>
-              </li>
-              <form class="container-fluid justify-content-end">
-                
-                <a class="btn btn-outline-danger me-2" href="{% url 'logout' %}" >logout</a>
-                
-              </form>
-              
-            </ul>
-            
-          </div>
-        </div>
-      </nav>
-
+    
      
-{% block alert %}
+
 {% if messages %}
 {% for message in messages %}
       <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -56,7 +51,7 @@
       </div>
       {% endfor %}
         {% endif %}
-{% endblock alert %}
+
 
 
     {% block body %}
